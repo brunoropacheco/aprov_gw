@@ -117,7 +117,7 @@ class AprovGW:
         #abre o chrome atraves do selenium para executar as acoes no geticweb uma vez que a
         #API nao ta deixando aprovar por la
         self.op              = ChromeOptions()
-        #self.op.add_argument('headless')
+        self.op.add_argument('headless')
         # = th(target=self.alimentalista)
         self.driver          = Chrome(options=self.op)
         #driver = th(target=Browser(options=op))
