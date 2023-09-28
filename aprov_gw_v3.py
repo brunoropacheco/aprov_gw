@@ -32,7 +32,7 @@ Esta versao esta fazendo o seguinte:
 
 def init_graph_int():
     root = tk.Tk()
-    img = tk.PhotoImage(file = r'C:\\Users\\c23x\\OneDrive - TRANSPETRO\Documentos - OneDrive\SERVTIC\Automatizacoes\br_logo.png')
+    img = tk.PhotoImage(file = r'.\br_logo.png')
     root.call('wm', 'iconphoto', root._w, img)    
     obj_principal = AprovGW(root)    
     root.protocol('WM_DELETE_WINDOW', obj_principal.destroi_janela)
@@ -89,7 +89,7 @@ class AprovGW:
         self.btns_reprv = {}
         self.curr_var = {}
         self.combobox = {}
-        with open("C:\\Users\\c23x\\OneDrive - TRANSPETRO\Documentos - OneDrive\SERVTIC\Automatizacoes\\aprov.txt") as self.file:
+        with open(".\\aprov.txt") as self.file:
             self.linhas = self.file.read().split('\n')
     
         for i in range(self.qtde_chmd):
