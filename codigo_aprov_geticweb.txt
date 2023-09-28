@@ -1,0 +1,2646 @@
+Python 3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+
+
+
+
+
+
+
+import requests
+import selenium
+
+import json
+
+url = "https://geticweb.transpetro.com.br/api/mob/aprovacao/Chamado/736865/0/1"
+payload = "acesso necessario"
+headers = {
+  'Authorization': 'Bearer 8lEHVx3t5kqc46XMjy_qZ7tEQgJSo311IJIqlYtOOo1KKXfurUiexDKDVfzr6Gq7yWJ2XltIuSHV0yCbe4YzeB6BmgQ9lv7h3FsJ8IXAPIfuTZjtEaB04-vZnsqh3pnJvCk7ZflXmxDCkURm8kd4LsvN8WSHW0hW3G7_a1iMPgtbd_OY_MlmCzwwdVP0B3meiB8fLTQzMMjlfVKkFM2a7jNQ7smgG3CSwJ-wM-rOYLjpmnVaZ9zs6xuyao9B-Cxy3NnwXdXJwsLJKsHf_erRg3f6XnRB-6NkMdl-rcqb1GWYw7SicfE5ugH8LtGTN7lyx0GNM-daTteGeS2RdqLWwhuD_hsIxBkZ8ifsYkab5XH9n4kQdCvP_IUlhPRF2k6kbuZy6gVbleKtulAPxgrruHKClQ1kAebJ5w1VhliiKluQEetyEKvSAcvMExJD05pk--r2cuMDqEInhYakbmzxSK3Km9c',
+  'Content-Type': 'application/json'
+}
+response = requests.request("POST", url, headers=headers, data=payload)
+Traceback (most recent call last):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 1040, in _validate_conn
+    conn.connect()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 414, in connect
+    self.sock = ssl_wrap_socket(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 512, in wrap_socket
+    return self.sslsocket_class._create(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1070, in _create
+    self.do_handshake()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1341, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='geticweb.transpetro.com.br', port=443): Max retries exceeded with url: /api/mob/aprovacao/Chamado/736865/0/1 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    response = requests.request("POST", url, headers=headers, data=payload)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 517, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='geticweb.transpetro.com.br', port=443): Max retries exceeded with url: /api/mob/aprovacao/Chamado/736865/0/1 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+
+Warning (from warnings module):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 1043
+    warnings.warn(
+InsecureRequestWarning: Unverified HTTPS request is being made to host 'geticweb.transpetro.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+print (response.text)
+{"message":"The request is invalid.","modelState":{"observacao":["Unexpected character encountered while parsing value: a. Path '', line 1, position 1."]}}
+clear
+Traceback (most recent call last):
+  File "<pyshell#19>", line 1, in <module>
+    clear
+NameError: name 'clear' is not defined
+cls
+Traceback (most recent call last):
+  File "<pyshell#20>", line 1, in <module>
+    cls
+NameError: name 'cls' is not defined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from selenium.webdriver import Chrome
+driver = Chrome()
+Traceback (most recent call last):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\service.py", line 71, in start
+    self.process = subprocess.Popen(cmd, env=self.env,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 966, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 1435, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] O sistema não pode encontrar o arquivo especificado
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<pyshell#43>", line 1, in <module>
+    driver = Chrome()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 70, in __init__
+    super(WebDriver, self).__init__(DesiredCapabilities.CHROME['browserName'], "goog",
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 89, in __init__
+    self.service.start()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\service.py", line 81, in start
+    raise WebDriverException(
+selenium.common.exceptions.WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from selenium.webdriver import Chrome
+driver = Chrome()
+driver.get("https://geticweb.transpetro.com.br")
+rom selenium.webdriver.common.keys import Keys
+SyntaxError: invalid syntax
+from selenium.webdriver.common.keys import Keys
+login = driver.find_element_by_id("usuario")
+
+Warning (from warnings module):
+  File "<pyshell#69>", line 1
+DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+login = driver.find_element(By.id,"usuario")
+Traceback (most recent call last):
+  File "<pyshell#70>", line 1, in <module>
+    login = driver.find_element(By.id,"usuario")
+NameError: name 'By' is not defined
+elmnt_email = driver.find_element(By.ID,"usuario")
+Traceback (most recent call last):
+  File "<pyshell#71>", line 1, in <module>
+    elmnt_email = driver.find_element(By.ID,"usuario")
+NameError: name 'By' is not defined
+>>> from selenium.webdriver.common.by import By
+SyntaxError: invalid syntax
+from selenium.webdriver.common.by import By
+elmnt_email = driver.find_element(By.ID,"usuario")
+elmnt_usuario = driver.find_element(By.ID,"usuario")
+elmnt_senha = driver.find_element(By.ID,"senha")
+usuario="c23x"
+senha="billYje2"
+elmnt_usuario.send_keys(usuario)
+elmnt_senha.send_keys(senha)
+elmnt_botao_login = driver.find_element(By.ID,'login')
+driver.execute_script("arguments[0].click();", elmnt_botao_login)
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+elmnt_lista_chamados_aprovacao = driver.find_element(By.className,'corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#84>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = driver.find_element(By.className,'corpoItens')
+AttributeError: type object 'By' has no attribute 'className'
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+elmnt_lista_chamados_aprovacao = driver.find_element(By.className,'corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#86>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = driver.find_element(By.className,'corpoItens')
+AttributeError: type object 'By' has no attribute 'className'
+elmnt_lista_chamados_aprovacao = driver.find_element(By.class_name,'corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#87>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = driver.find_element(By.class_name,'corpoItens')
+AttributeError: type object 'By' has no attribute 'class_name'
+elmnt_lista_chamados_aprovacao = driver.find_elements_by_class_name('corpoItens')
+
+Warning (from warnings module):
+  File "<pyshell#88>", line 1
+DeprecationWarning: find_elements_by_class_name is deprecated. Please use find_elements(by=By.CLASS_NAME, value=name) instead
+elmnt_lista_chamados_aprovacao = find_elements(by=By.CLASS_NAME, value='corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#89>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = find_elements(by=By.CLASS_NAME, value='corpoItens')
+NameError: name 'find_elements' is not defined
+elmnt_lista_chamados_aprovacao = find_element(by=By.CLASS_NAME, value='corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#90>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = find_element(by=By.CLASS_NAME, value='corpoItens')
+NameError: name 'find_element' is not defined
+elmnt_lista_chamados_aprovacao = driver.find_elements(by=By.CLASS_NAME, value='corpoItens')
+elmnt_lista_chamados_aprovacao
+[]
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+elmnt_lista_chamados_aprovacao = driver.find_elements(by=By.CLASS_NAME, value='corpoItens')
+elmnt_lista_chamados_aprovacao
+[]
+elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+Traceback (most recent call last):
+  File "<pyshell#96>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="Aprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH, '//*[@id="Aprovacao"]/table/tbody')
+Traceback (most recent call last):
+  File "<pyshell#97>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH, '//*[@id="Aprovacao"]/table/tbody')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="Aprovacao"]/table/tbody"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody')
+Traceback (most recent call last):
+  File "<pyshell#98>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,'\/html\/body\/div[1]/form/div/div[1]/div[10]/table/tbody[1]')
+Traceback (most recent call last):
+  File "<pyshell#99>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,'\/html\/body\/div[1]/form/div/div[1]/div[10]/table/tbody[1]')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression \/html\/body\/div[1]/form/div/div[1]/div[10]/table/tbody[1] because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '\/html\/body\/div[1]/form/div/div[1]/div[10]/table/tbody[1]' is not a valid XPath expression.
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F200+848384]
+	Ordinal0 [0x00D89215+1020437]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+KeyboardInterrupt
+tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody')
+Traceback (most recent call last):
+  File "<pyshell#100>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1])
+                                     
+SyntaxError: unterminated string literal (detected at line 1)
+tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]')
+                                     
+Traceback (most recent call last):
+  File "<pyshell#102>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]")
+Traceback (most recent call last):
+  File "<pyshell#103>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]")
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,"//div[@id="Aprovacao"]")
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+tabela_aprovacao=driver.find_element(By.XPATH,"//div[@id='Aprovacao']")
+Traceback (most recent call last):
+  File "<pyshell#105>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,"//div[@id='Aprovacao']")
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@id='Aprovacao']"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_bt_aprov = driver.find_element(By.ID,'btAprovacao')
+Traceback (most recent call last):
+  File "<pyshell#106>", line 1, in <module>
+    elmnt_bt_aprov = driver.find_element(By.ID,'btAprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="btAprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_usuario = driver.find_element(By.ID,"usuario")
+elmnt_usuario.send_keys(usuario)
+elmnt_senha.send_keys(senha)
+Traceback (most recent call last):
+  File "<pyshell#109>", line 1, in <module>
+    elmnt_senha.send_keys(senha)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 600, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F200+848384]
+	Ordinal0 [0x00D89FC6+1023942]
+	Ordinal0 [0x00D8A0A4+1024164]
+	Ordinal0 [0x00D82929+993577]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_senha.send_keys(senha)
+Traceback (most recent call last):
+  File "<pyshell#110>", line 1, in <module>
+    elmnt_senha.send_keys(senha)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 600, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F200+848384]
+	Ordinal0 [0x00D89FC6+1023942]
+	Ordinal0 [0x00D8A0A4+1024164]
+	Ordinal0 [0x00D82929+993577]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_senha = driver.find_element(By.ID,"senha")
+elmnt_senha.send_keys(senha)
+elmnt_botao_login = driver.find_element(By.ID,'login')
+driver.execute_script("arguments[0].click();", elmnt_botao_login)
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+Traceback (most recent call last):
+  File "<pyshell#116>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="Aprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,"//div[contains(@id,'Aprovacao')]")
+Traceback (most recent call last):
+  File "<pyshell#117>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,"//div[contains(@id,'Aprovacao')]")
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@id,'Aprovacao')]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_chamados_aprov = driver.find_element(By.ID,'btAprovacao')
+Traceback (most recent call last):
+  File "<pyshell#118>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.ID,'btAprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="btAprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_chamados_aprov = driver.find_element(By.ID,'btAprovacao')
+Traceback (most recent call last):
+  File "<pyshell#119>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.ID,'btAprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="btAprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_chamados_aprov = driver.find_element(By.name,'btAprovacao')
+Traceback (most recent call last):
+  File "<pyshell#120>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.name,'btAprovacao')
+AttributeError: type object 'By' has no attribute 'name'
+elmnt_chamados_aprov = driver.find_elements(By.ID,'btAprovacao')
+elmnt_chamados_aprov
+[]
+elmnt_chamados_aprov = driver.find_elements(By.css_selector,'div')
+Traceback (most recent call last):
+  File "<pyshell#123>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_elements(By.css_selector,'div')
+AttributeError: type object 'By' has no attribute 'css_selector'
+
+teste=driver.find_elements_by_css_selector('div')
+  
+
+Warning (from warnings module):
+  File "<pyshell#124>", line 2
+DeprecationWarning: find_elements_by_css_selector is deprecated. Please use find_elements(by=By.CSS_SELECTOR, value=css_selector) instead
+elmnt_chamados_aprov = driver.find_elements(By.CSS_SELECTOR,'div')
+elmnt_chamados_aprov
+
+elmnt_chamados_aprov = driver.find_elements(By.CSS_SELECTOR,'div, id')
+  
+elmnt_chamados_aprov
+  
+
+elmnt_chamados_aprov = driver.find_elements(By.CSS_SELECTOR,'div id')
+  
+elmnt_chamados_aprov
+  
+[]
+elmnt_chamados_aprov = driver.find_elements(By.CSS_SELECTOR,'id')
+  
+elmnt_chamados_aprov
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'id')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'[id]')
+  
+
+driver.find_elements(By.CSS_SELECTOR,'div [id]')
+  
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="b85fcabf-1e6c-4223-915f-e86a30262843")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="12925e9b-1aff-4fd8-8951-1908d7fb66c0")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="18ba4673-4b69-46b7-a895-fc36c3a386c8")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="d2c89164-26b7-42ab-bcbe-05780600e135")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="4b9f7398-cfe9-4e57-9060-290ecf0b1163")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="e7d6cddb-28d8-430a-9bf5-621a3afe8718")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="884d8b25-33ff-4433-9de4-f021a314a116")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="4cc60969-2904-4c5f-af70-e231bd152a7c")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="264df493-d9d7-48dc-93f7-902798211930")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="7371ac6f-77eb-487d-9c8d-b008adfc8f9b")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="272ec427-28ec-43c3-a364-8220e230e738")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="6ed83276-cf19-4edf-bb7f-fb38f59d8970")>]
+driver.find_elements(By.CSS_SELECTOR,'div, [id]')
+  
+
+driver.find_elements(By.CSS_SELECTOR,'[id*=usuario]')
+  
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="b85fcabf-1e6c-4223-915f-e86a30262843")>]
+driver.find_elements(By.CSS_SELECTOR,'[id*=Aprovacao]')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'[id*=ovacao]')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'div [id]')
+  
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="05d34c45-fa0f-4af7-8a04-35a7007df5e9")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="6514fc72-4b7a-41aa-ab14-ded5e5cd193c")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="e5894741-9ab8-4ea6-a270-a0937534c740")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="04eb6e69-b4a3-406c-86ad-d34aed33c0f6")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="28a225c8-9786-4fb7-b210-233f93d81154")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="4c6fb37f-7786-4dea-b777-7b73c6b58019")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="c6759d32-61eb-44d4-8cc2-fa881886f0e5")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="b5781af7-7d8f-4c00-b0e9-873fa369443d")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="69ec1e1b-def2-4a2a-8b2b-6c62604aab25")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="c2ab134f-c2cd-4b65-807b-d550b33c9ac0")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="5894d652-7f4a-4fbe-8a3c-0a00d3795e21")>]
+driver.find_elements(By.CSS_SELECTOR,'div.corpoItens')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'[id*=Conteudo]')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'div.ColunaItens')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'[id*=iframeTeste]')
+  
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="5894d652-7f4a-4fbe-8a3c-0a00d3795e21")>]
+frame = driver.find_elements(By.CSS_SELECTOR,'[id*=iframeTeste]')
+  
+driver.switch_to.frame(frame)
+  
+Traceback (most recent call last):
+  File "<pyshell#146>", line 1, in <module>
+    driver.switch_to.frame(frame)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\switch_to.py", line 94, in frame
+    self._driver.execute(Command.SWITCH_TO_FRAME, {'id': frame_reference})
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: invalid argument: invalid 'id'
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00DB6257+1204823]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+frame = driver.find_elements(By.CSS_SELECTOR,'div.tool_forms iframe')
+frame
+[]
+frame = driver.find_elements(By.CSS_SELECTOR,'[id*=iframeTeste]')
+frame
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="5894d652-7f4a-4fbe-8a3c-0a00d3795e21")>]
+driver.find_elements(By.CSS_SELECTOR,'div.iframeAntigo iframe')
+[]
+driver.find_element(By.CSS_SELECTOR,'[id*=iframeTeste]')
+<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="5894d652-7f4a-4fbe-8a3c-0a00d3795e21")>
+frame = driver.find_element(By.CSS_SELECTOR,'[id*=iframeTeste]')
+driver.switch_to.frame(frame)
+driver.find_elements(By.CSS_SELECTOR,'[id*=Aprovacao]')
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="8d370f74-33af-4a8e-95c3-db8a1344f2cc")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="14ef13cf-3d0a-4187-9dbf-81d18ecc50ab")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="d31be2c5-1dd0-4db0-abc1-02e3f3a4c801")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="032d7c65-4620-4c7d-ae22-7c4baf680631")>]
+elmnt_chamados_aprov = driver.find_elements(By.ID,'Aprovacao')
+elmnt_chamados_aprov
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="032d7c65-4620-4c7d-ae22-7c4baf680631")>]
+elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+
+
+
+
+Python 3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+
+
+
+
+
+
+
+import requests
+import selenium
+
+import json
+
+url = "https://geticweb.transpetro.com.br/api/mob/aprovacao/Chamado/736865/0/1"
+payload = "acesso necessario"
+headers = {
+  'Authorization': 'Bearer 8lEHVx3t5kqc46XMjy_qZ7tEQgJSo311IJIqlYtOOo1KKXfurUiexDKDVfzr6Gq7yWJ2XltIuSHV0yCbe4YzeB6BmgQ9lv7h3FsJ8IXAPIfuTZjtEaB04-vZnsqh3pnJvCk7ZflXmxDCkURm8kd4LsvN8WSHW0hW3G7_a1iMPgtbd_OY_MlmCzwwdVP0B3meiB8fLTQzMMjlfVKkFM2a7jNQ7smgG3CSwJ-wM-rOYLjpmnVaZ9zs6xuyao9B-Cxy3NnwXdXJwsLJKsHf_erRg3f6XnRB-6NkMdl-rcqb1GWYw7SicfE5ugH8LtGTN7lyx0GNM-daTteGeS2RdqLWwhuD_hsIxBkZ8ifsYkab5XH9n4kQdCvP_IUlhPRF2k6kbuZy6gVbleKtulAPxgrruHKClQ1kAebJ5w1VhliiKluQEetyEKvSAcvMExJD05pk--r2cuMDqEInhYakbmzxSK3Km9c',
+  'Content-Type': 'application/json'
+}
+response = requests.request("POST", url, headers=headers, data=payload)
+Traceback (most recent call last):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 1040, in _validate_conn
+    conn.connect()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 414, in connect
+    self.sock = ssl_wrap_socket(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 512, in wrap_socket
+    return self.sslsocket_class._create(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1070, in _create
+    self.do_handshake()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1341, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='geticweb.transpetro.com.br', port=443): Max retries exceeded with url: /api/mob/aprovacao/Chamado/736865/0/1 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    response = requests.request("POST", url, headers=headers, data=payload)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 517, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='geticweb.transpetro.com.br', port=443): Max retries exceeded with url: /api/mob/aprovacao/Chamado/736865/0/1 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+
+Warning (from warnings module):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 1043
+    warnings.warn(
+InsecureRequestWarning: Unverified HTTPS request is being made to host 'geticweb.transpetro.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+print (response.text)
+{"message":"The request is invalid.","modelState":{"observacao":["Unexpected character encountered while parsing value: a. Path '', line 1, position 1."]}}
+clear
+Traceback (most recent call last):
+  File "<pyshell#19>", line 1, in <module>
+    clear
+NameError: name 'clear' is not defined
+cls
+Traceback (most recent call last):
+  File "<pyshell#20>", line 1, in <module>
+    cls
+NameError: name 'cls' is not defined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from selenium.webdriver import Chrome
+driver = Chrome()
+Traceback (most recent call last):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\service.py", line 71, in start
+    self.process = subprocess.Popen(cmd, env=self.env,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 966, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 1435, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+FileNotFoundError: [WinError 2] O sistema não pode encontrar o arquivo especificado
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<pyshell#43>", line 1, in <module>
+    driver = Chrome()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 70, in __init__
+    super(WebDriver, self).__init__(DesiredCapabilities.CHROME['browserName'], "goog",
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 89, in __init__
+    self.service.start()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\common\service.py", line 81, in start
+    raise WebDriverException(
+selenium.common.exceptions.WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from selenium.webdriver import Chrome
+driver = Chrome()
+driver.get("https://geticweb.transpetro.com.br")
+rom selenium.webdriver.common.keys import Keys
+SyntaxError: invalid syntax
+from selenium.webdriver.common.keys import Keys
+login = driver.find_element_by_id("usuario")
+
+Warning (from warnings module):
+  File "<pyshell#69>", line 1
+DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+login = driver.find_element(By.id,"usuario")
+Traceback (most recent call last):
+  File "<pyshell#70>", line 1, in <module>
+    login = driver.find_element(By.id,"usuario")
+NameError: name 'By' is not defined
+elmnt_email = driver.find_element(By.ID,"usuario")
+Traceback (most recent call last):
+  File "<pyshell#71>", line 1, in <module>
+    elmnt_email = driver.find_element(By.ID,"usuario")
+NameError: name 'By' is not defined
+>>> from selenium.webdriver.common.by import By
+SyntaxError: invalid syntax
+from selenium.webdriver.common.by import By
+elmnt_email = driver.find_element(By.ID,"usuario")
+elmnt_usuario = driver.find_element(By.ID,"usuario")
+elmnt_senha = driver.find_element(By.ID,"senha")
+usuario="c23x"
+senha="billYje2"
+elmnt_usuario.send_keys(usuario)
+elmnt_senha.send_keys(senha)
+elmnt_botao_login = driver.find_element(By.ID,'login')
+driver.execute_script("arguments[0].click();", elmnt_botao_login)
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+elmnt_lista_chamados_aprovacao = driver.find_element(By.className,'corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#84>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = driver.find_element(By.className,'corpoItens')
+AttributeError: type object 'By' has no attribute 'className'
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+elmnt_lista_chamados_aprovacao = driver.find_element(By.className,'corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#86>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = driver.find_element(By.className,'corpoItens')
+AttributeError: type object 'By' has no attribute 'className'
+elmnt_lista_chamados_aprovacao = driver.find_element(By.class_name,'corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#87>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = driver.find_element(By.class_name,'corpoItens')
+AttributeError: type object 'By' has no attribute 'class_name'
+elmnt_lista_chamados_aprovacao = driver.find_elements_by_class_name('corpoItens')
+
+Warning (from warnings module):
+  File "<pyshell#88>", line 1
+DeprecationWarning: find_elements_by_class_name is deprecated. Please use find_elements(by=By.CLASS_NAME, value=name) instead
+elmnt_lista_chamados_aprovacao = find_elements(by=By.CLASS_NAME, value='corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#89>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = find_elements(by=By.CLASS_NAME, value='corpoItens')
+NameError: name 'find_elements' is not defined
+elmnt_lista_chamados_aprovacao = find_element(by=By.CLASS_NAME, value='corpoItens')
+Traceback (most recent call last):
+  File "<pyshell#90>", line 1, in <module>
+    elmnt_lista_chamados_aprovacao = find_element(by=By.CLASS_NAME, value='corpoItens')
+NameError: name 'find_element' is not defined
+elmnt_lista_chamados_aprovacao = driver.find_elements(by=By.CLASS_NAME, value='corpoItens')
+elmnt_lista_chamados_aprovacao
+[]
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+elmnt_lista_chamados_aprovacao = driver.find_elements(by=By.CLASS_NAME, value='corpoItens')
+elmnt_lista_chamados_aprovacao
+[]
+elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+Traceback (most recent call last):
+  File "<pyshell#96>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="Aprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH, '//*[@id="Aprovacao"]/table/tbody')
+Traceback (most recent call last):
+  File "<pyshell#97>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH, '//*[@id="Aprovacao"]/table/tbody')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="Aprovacao"]/table/tbody"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody')
+Traceback (most recent call last):
+  File "<pyshell#98>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,'\/html\/body\/div[1]/form/div/div[1]/div[10]/table/tbody[1]')
+Traceback (most recent call last):
+  File "<pyshell#99>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,'\/html\/body\/div[1]/form/div/div[1]/div[10]/table/tbody[1]')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression \/html\/body\/div[1]/form/div/div[1]/div[10]/table/tbody[1] because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '\/html\/body\/div[1]/form/div/div[1]/div[10]/table/tbody[1]' is not a valid XPath expression.
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F200+848384]
+	Ordinal0 [0x00D89215+1020437]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+KeyboardInterrupt
+tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody')
+Traceback (most recent call last):
+  File "<pyshell#100>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1])
+                                     
+SyntaxError: unterminated string literal (detected at line 1)
+tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]')
+                                     
+Traceback (most recent call last):
+  File "<pyshell#102>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,'/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]")
+Traceback (most recent call last):
+  File "<pyshell#103>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]")
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/form/div/div[1]/div[10]/table/tbody/tr[1]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,"//div[@id="Aprovacao"]")
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+tabela_aprovacao=driver.find_element(By.XPATH,"//div[@id='Aprovacao']")
+Traceback (most recent call last):
+  File "<pyshell#105>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,"//div[@id='Aprovacao']")
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@id='Aprovacao']"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_bt_aprov = driver.find_element(By.ID,'btAprovacao')
+Traceback (most recent call last):
+  File "<pyshell#106>", line 1, in <module>
+    elmnt_bt_aprov = driver.find_element(By.ID,'btAprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="btAprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_usuario = driver.find_element(By.ID,"usuario")
+elmnt_usuario.send_keys(usuario)
+elmnt_senha.send_keys(senha)
+Traceback (most recent call last):
+  File "<pyshell#109>", line 1, in <module>
+    elmnt_senha.send_keys(senha)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 600, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F200+848384]
+	Ordinal0 [0x00D89FC6+1023942]
+	Ordinal0 [0x00D8A0A4+1024164]
+	Ordinal0 [0x00D82929+993577]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_senha.send_keys(senha)
+Traceback (most recent call last):
+  File "<pyshell#110>", line 1, in <module>
+    elmnt_senha.send_keys(senha)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 600, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F200+848384]
+	Ordinal0 [0x00D89FC6+1023942]
+	Ordinal0 [0x00D8A0A4+1024164]
+	Ordinal0 [0x00D82929+993577]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_senha = driver.find_element(By.ID,"senha")
+elmnt_senha.send_keys(senha)
+elmnt_botao_login = driver.find_element(By.ID,'login')
+driver.execute_script("arguments[0].click();", elmnt_botao_login)
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+Traceback (most recent call last):
+  File "<pyshell#116>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="Aprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+tabela_aprovacao=driver.find_element(By.XPATH,"//div[contains(@id,'Aprovacao')]")
+Traceback (most recent call last):
+  File "<pyshell#117>", line 1, in <module>
+    tabela_aprovacao=driver.find_element(By.XPATH,"//div[contains(@id,'Aprovacao')]")
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@id,'Aprovacao')]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_chamados_aprov = driver.find_element(By.ID,'btAprovacao')
+Traceback (most recent call last):
+  File "<pyshell#118>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.ID,'btAprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="btAprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_chamados_aprov = driver.find_element(By.ID,'btAprovacao')
+Traceback (most recent call last):
+  File "<pyshell#119>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.ID,'btAprovacao')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="btAprovacao"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_chamados_aprov = driver.find_element(By.name,'btAprovacao')
+Traceback (most recent call last):
+  File "<pyshell#120>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_element(By.name,'btAprovacao')
+AttributeError: type object 'By' has no attribute 'name'
+elmnt_chamados_aprov = driver.find_elements(By.ID,'btAprovacao')
+elmnt_chamados_aprov
+[]
+elmnt_chamados_aprov = driver.find_elements(By.css_selector,'div')
+Traceback (most recent call last):
+  File "<pyshell#123>", line 1, in <module>
+    elmnt_chamados_aprov = driver.find_elements(By.css_selector,'div')
+AttributeError: type object 'By' has no attribute 'css_selector'
+
+teste=driver.find_elements_by_css_selector('div')
+  
+
+Warning (from warnings module):
+  File "<pyshell#124>", line 2
+DeprecationWarning: find_elements_by_css_selector is deprecated. Please use find_elements(by=By.CSS_SELECTOR, value=css_selector) instead
+elmnt_chamados_aprov = driver.find_elements(By.CSS_SELECTOR,'div')
+elmnt_chamados_aprov
+
+elmnt_chamados_aprov = driver.find_elements(By.CSS_SELECTOR,'div, id')
+  
+elmnt_chamados_aprov
+  
+
+elmnt_chamados_aprov = driver.find_elements(By.CSS_SELECTOR,'div id')
+  
+elmnt_chamados_aprov
+  
+[]
+elmnt_chamados_aprov = driver.find_elements(By.CSS_SELECTOR,'id')
+  
+elmnt_chamados_aprov
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'id')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'[id]')
+  
+
+driver.find_elements(By.CSS_SELECTOR,'div [id]')
+  
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="b85fcabf-1e6c-4223-915f-e86a30262843")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="12925e9b-1aff-4fd8-8951-1908d7fb66c0")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="18ba4673-4b69-46b7-a895-fc36c3a386c8")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="d2c89164-26b7-42ab-bcbe-05780600e135")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="4b9f7398-cfe9-4e57-9060-290ecf0b1163")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="e7d6cddb-28d8-430a-9bf5-621a3afe8718")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="884d8b25-33ff-4433-9de4-f021a314a116")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="4cc60969-2904-4c5f-af70-e231bd152a7c")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="264df493-d9d7-48dc-93f7-902798211930")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="7371ac6f-77eb-487d-9c8d-b008adfc8f9b")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="272ec427-28ec-43c3-a364-8220e230e738")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="6ed83276-cf19-4edf-bb7f-fb38f59d8970")>]
+driver.find_elements(By.CSS_SELECTOR,'div, [id]')
+  
+
+driver.find_elements(By.CSS_SELECTOR,'[id*=usuario]')
+  
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="b85fcabf-1e6c-4223-915f-e86a30262843")>]
+driver.find_elements(By.CSS_SELECTOR,'[id*=Aprovacao]')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'[id*=ovacao]')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'div [id]')
+  
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="05d34c45-fa0f-4af7-8a04-35a7007df5e9")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="6514fc72-4b7a-41aa-ab14-ded5e5cd193c")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="e5894741-9ab8-4ea6-a270-a0937534c740")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="04eb6e69-b4a3-406c-86ad-d34aed33c0f6")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="28a225c8-9786-4fb7-b210-233f93d81154")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="4c6fb37f-7786-4dea-b777-7b73c6b58019")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="c6759d32-61eb-44d4-8cc2-fa881886f0e5")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="b5781af7-7d8f-4c00-b0e9-873fa369443d")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="69ec1e1b-def2-4a2a-8b2b-6c62604aab25")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="c2ab134f-c2cd-4b65-807b-d550b33c9ac0")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="5894d652-7f4a-4fbe-8a3c-0a00d3795e21")>]
+driver.find_elements(By.CSS_SELECTOR,'div.corpoItens')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'[id*=Conteudo]')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'div.ColunaItens')
+  
+[]
+driver.find_elements(By.CSS_SELECTOR,'[id*=iframeTeste]')
+  
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="5894d652-7f4a-4fbe-8a3c-0a00d3795e21")>]
+frame = driver.find_elements(By.CSS_SELECTOR,'[id*=iframeTeste]')
+  
+driver.switch_to.frame(frame)
+  
+Traceback (most recent call last):
+  File "<pyshell#146>", line 1, in <module>
+    driver.switch_to.frame(frame)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\switch_to.py", line 94, in frame
+    self._driver.execute(Command.SWITCH_TO_FRAME, {'id': frame_reference})
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: invalid argument: invalid 'id'
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00DB6257+1204823]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+frame = driver.find_elements(By.CSS_SELECTOR,'div.tool_forms iframe')
+frame
+[]
+frame = driver.find_elements(By.CSS_SELECTOR,'[id*=iframeTeste]')
+frame
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="5894d652-7f4a-4fbe-8a3c-0a00d3795e21")>]
+driver.find_elements(By.CSS_SELECTOR,'div.iframeAntigo iframe')
+[]
+driver.find_element(By.CSS_SELECTOR,'[id*=iframeTeste]')
+<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="5894d652-7f4a-4fbe-8a3c-0a00d3795e21")>
+frame = driver.find_element(By.CSS_SELECTOR,'[id*=iframeTeste]')
+driver.switch_to.frame(frame)
+driver.find_elements(By.CSS_SELECTOR,'[id*=Aprovacao]')
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="8d370f74-33af-4a8e-95c3-db8a1344f2cc")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="14ef13cf-3d0a-4187-9dbf-81d18ecc50ab")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="d31be2c5-1dd0-4db0-abc1-02e3f3a4c801")>, <selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="032d7c65-4620-4c7d-ae22-7c4baf680631")>]
+elmnt_chamados_aprov = driver.find_elements(By.ID,'Aprovacao')
+elmnt_chamados_aprov
+[<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="032d7c65-4620-4c7d-ae22-7c4baf680631")>]
+elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+elmnt_chamados_aprov.text
+'Tarefas/Chamados dependendo de sua aprovação\nID Título Tipo\n736857 Solicitar a Exclusão de Chave ...\n736865 Teste SACHBOT titulo2\n736933 GETICWEB - Solicitar a Criação...\n736938 GETICWEB - Solicitar a Criação...'
+for row in rows:
+    
+KeyboardInterrupt
+for row in elmnt_chamados_aprov:
+    print row.text
+    
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print(...)?
+for row in elmnt_chamados_aprov:
+  print(row.text)
+
+  
+Traceback (most recent call last):
+  File "<pyshell#165>", line 1, in <module>
+    for row in elmnt_chamados_aprov:
+TypeError: 'WebElement' object is not iterable
+print(elmnt_chamados_aprov.text)
+  
+Tarefas/Chamados dependendo de sua aprovação
+ID Título Tipo
+736857 Solicitar a Exclusão de Chave ...
+736865 Teste SACHBOT titulo2
+736933 GETICWEB - Solicitar a Criação...
+736938 GETICWEB - Solicitar a Criação...
+texto=elmnt_chamados_aprov.text
+  
+for item in texto.split("\n"):
+  if item[0].isdigit():
+      print(item[0:5])
+
+  
+73685
+73686
+73693
+73693
+item[0]
+  
+'7'
+for item in texto.split("\n"):
+  if item[0].isdigit():
+      print(item[0:6])
+
+  
+736857
+736865
+736933
+736938
+for item in texto.split("\n"):
+  if item[0].isdigit():
+      print(item[0:6])
+      
+KeyboardInterrupt
+chamados_aprovacao=[]
+  
+for item in texto.split("\n"):
+  if item[0].isdigit():
+      print(item[0:6])
+      chamados_aprovacao.append(item[0:6])
+
+  
+736857
+736865
+736933
+736938
+chamados_aprovacao
+  
+['736857', '736865', '736933', '736938']
+elmnt_usuario = driver.find_element(By.ID,"usuario")
+elmnt_senha = driver.find_element(By.ID,"senha")
+usuario="c23x"
+senha="billYje2"
+  
+SyntaxError: multiple statements found while compiling a single statement
+elmnt_usuario = driver.find_element(By.ID,"usuario")
+  
+elmnt_senha = driver.find_element(By.ID,"senha")
+  
+elmnt_usuario.send_keys(usuario)
+  
+elmnt_senha.send_keys(senha)
+  
+elmnt_botao_login = driver.find_element(By.ID,'login')
+  
+driver.execute_script("arguments[0].click();", elmnt_botao_login)
+  
+driver.get("https://geticweb.transpetro.com.br/indexAtendente.html#/main/portal/")
+  
+frame = driver.find_element(By.CSS_SELECTOR,'[id*=iframeTeste]')
+  
+driver.switch_to.frame(frame)
+  
+elmnt_chamados_aprov = driver.find_element(By.ID,'Aprovacao')
+  
+KeyboardInterrupt
+for item in elmnt_chamados_aprov.text.split("\n"):
+  if item[0].isdigit():
+      print(item[0:6])
+      chamados_aprovacao.append(item[0:6])
+
+  
+736857
+736865
+736933
+736938
+chmd_aprov=chamados_aprovacao
+  
+urlchmd="https://geticweb.transpetro.com.br/historico.asp?SessionID=F9C8A68CC08F42F499E7D1C64BDF09C1&Sol="
+  
+urlchmd=urlchmd+chmd_aprov[0]
+  
+urlchmd
+  
+'https://geticweb.transpetro.com.br/historico.asp?SessionID=F9C8A68CC08F42F499E7D1C64BDF09C1&Sol=736857'
+driver.get(urlchmd)
+  
+frame = driver.find_element(By.CSS_SELECTOR,'[id*=solicitacao]')
+  
+driver.switch_to.frame(frame)
+  
+elmnt_btaprov = driver.find_element(By.ID,'btAprovacao')
+  
+driver.execute_script("arguments[0].click();", elmnt_btaprov)
+  
+elmnt_cmp_just_aprov = driver.find_element(By.ID,"ext-gen15")
+  
+mtv_aprov = "Desligamento de Colaborador"
+  
+elmnt_cmp_just_aprov.send_keys(mtv_aprov)
+  
+Traceback (most recent call last):
+  File "<pyshell#205>", line 1, in <module>
+    elmnt_cmp_just_aprov.send_keys(mtv_aprov)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 600, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C580+836992]
+	Ordinal0 [0x00D84BE3+1002467]
+	Ordinal0 [0x00D842C8+1000136]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_cmp_just_aprov.click()
+Traceback (most recent call last):
+  File "<pyshell#206>", line 1, in <module>
+    elmnt_cmp_just_aprov.click()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 89, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <iframe src="historicoIframe.asp?SessionID=F9C8A68CC08F42F499E7D1C64BDF09C1&amp;Tipo=1&amp;SolID=736857&amp;Entra=1&amp;Origem=&amp;hidSinCadeado=&amp;hidSinCadeadoAmarelo=&amp;hidSinBandeira=&amp;hidSinBandeiraAmarela=&amp;hidSinBandeiraAzul=&amp;hidSinBandeiraVerde=&amp;hidSinChamadoIntegrado=&amp;hidSinChaveReprovada=&amp;hidSinChaveAprovada=" name="solicitacao" id="solicitacao" scrolling="no" frameborder="0" style="height: 300.76px; width: 100%;" cd_frame_id_="efa866519e2df35db6b9b76b1f5af0ce"></iframe> is not clickable at point (98, 43). Other element would receive the click: <div class="ext-el-mask" id="ext-gen30" style="display: block; width: 775px; height: 708px; z-index: 9000;"></div>
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D8FC27+1047591]
+	Ordinal0 [0x00D8DC08+1039368]
+	Ordinal0 [0x00D8BDEE+1031662]
+	Ordinal0 [0x00D8A659+1025625]
+	Ordinal0 [0x00D80293+983699]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_cmp_just_aprov.send_keys(mtv_aprov)
+Traceback (most recent call last):
+  File "<pyshell#207>", line 1, in <module>
+    elmnt_cmp_just_aprov.send_keys(mtv_aprov)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 600, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C580+836992]
+	Ordinal0 [0x00D84BE3+1002467]
+	Ordinal0 [0x00D842C8+1000136]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+driver.executeScript("arguments[0].setAttribute('value', arguments[1])", elmnt_cmp_just_aprov, mtv_aprov)
+Traceback (most recent call last):
+  File "<pyshell#208>", line 1, in <module>
+    driver.executeScript("arguments[0].setAttribute('value', arguments[1])", elmnt_cmp_just_aprov, mtv_aprov)
+AttributeError: 'WebDriver' object has no attribute 'executeScript'. Did you mean: 'execute_script'?
+driver.execute_script("arguments[0].setAttribute('value', arguments[1])", elmnt_cmp_just_aprov, mtv_aprov)
+driver.execute_script("arguments[0].setAttribute('value', arguments[1])", elmnt_cmp_just_aprov, mtv_aprov)
+elmnt_cmp_just_aprov.value
+Traceback (most recent call last):
+  File "<pyshell#211>", line 1, in <module>
+    elmnt_cmp_just_aprov.value
+AttributeError: 'WebElement' object has no attribute 'value'
+elmnt_cmp_just_aprov.text
+''
+elmnt_cmp_just_aprov.submit()
+Traceback (most recent call last):
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 104, in submit
+    self._parent.execute_script(script, self)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 884, in execute_script
+    return self.execute(command, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.JavascriptException: Message: javascript error: Unable to find owning document
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F8EA+850154]
+	Ordinal0 [0x00DB5249+1200713]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<pyshell#213>", line 1, in <module>
+    elmnt_cmp_just_aprov.submit()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 106, in submit
+    raise WebDriverException("To submit an element, it must be nested inside a form element")
+selenium.common.exceptions.WebDriverException: Message: To submit an element, it must be nested inside a form element
+
+elmnt_cmp_just_aprov = driver.find_element(By.ID,"x-form-el-ext-gen15")
+Traceback (most recent call last):
+  File "<pyshell#214>", line 1, in <module>
+    elmnt_cmp_just_aprov = driver.find_element(By.ID,"x-form-el-ext-gen15")
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="x-form-el-ext-gen15"]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+frame = driver.find_element(By.CSS_SELECTOR,'[id*=solicitacao]')
+Traceback (most recent call last):
+  File "<pyshell#215>", line 1, in <module>
+    frame = driver.find_element(By.CSS_SELECTOR,'[id*=solicitacao]')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1251, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id*=solicitacao]"}
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D89500+1021184]
+	Ordinal0 [0x00D8979B+1021851]
+	Ordinal0 [0x00DB6502+1205506]
+	Ordinal0 [0x00DA44E4+1131748]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_cmp_just_aprov = driver.find_element(By.ID,"ext-gen15")
+elmnt_cmp_just_aprov.clear()
+Traceback (most recent call last):
+  File "<pyshell#217>", line 1, in <module>
+    elmnt_cmp_just_aprov.clear()
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 110, in clear
+    self._execute(Command.CLEAR_ELEMENT)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidElementStateException: Message: invalid element state
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C580+836992]
+	Ordinal0 [0x00D81DAD+990637]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_cmp_just_aprov.send_keys('teste')
+Traceback (most recent call last):
+  File "<pyshell#218>", line 1, in <module>
+    elmnt_cmp_just_aprov.send_keys('teste')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 600, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT,
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 773, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C580+836992]
+	Ordinal0 [0x00D84BE3+1002467]
+	Ordinal0 [0x00D842C8+1000136]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00D7FC74+982132]
+	Ordinal0 [0x00DA46B4+1132212]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+driver.execute_script("arguments[0].value='teste';", elmnt_cmp_just_aprov, mtv_aprov)
+driver.execute_script("arguments[0].value='teste';", elmnt_cmp_just_aprov)
+driver.execute_script("arguments[0].value='teste';", elmnt_cmp_just_aprov)
+driver.execute_script("arguments[0].value='teste';", elmnt_cmp_just_aprov)
+driver.execute_script("arguments[1].value='teste';", elmnt_cmp_just_aprov)
+Traceback (most recent call last):
+  File "<pyshell#223>", line 1, in <module>
+    driver.execute_script("arguments[1].value='teste';", elmnt_cmp_just_aprov)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 884, in execute_script
+    return self.execute(command, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.JavascriptException: Message: javascript error: Cannot set properties of undefined (setting 'value')
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F8EA+850154]
+	Ordinal0 [0x00DB5249+1200713]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+driver.execute_script("arguments[1].innerHTML='teste';", elmnt_cmp_just_aprov)
+Traceback (most recent call last):
+  File "<pyshell#224>", line 1, in <module>
+    driver.execute_script("arguments[1].innerHTML='teste';", elmnt_cmp_just_aprov)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 884, in execute_script
+    return self.execute(command, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.JavascriptException: Message: javascript error: Cannot set properties of undefined (setting 'innerHTML')
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F8EA+850154]
+	Ordinal0 [0x00DB5249+1200713]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+driver.execute_script("arguments[1].innerText='teste';", elmnt_cmp_just_aprov)
+Traceback (most recent call last):
+  File "<pyshell#225>", line 1, in <module>
+    driver.execute_script("arguments[1].innerText='teste';", elmnt_cmp_just_aprov)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 884, in execute_script
+    return self.execute(command, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.JavascriptException: Message: javascript error: Cannot set properties of undefined (setting 'innerText')
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F8EA+850154]
+	Ordinal0 [0x00DB5249+1200713]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+driver.execute_script("arguments[0].innerText='teste';", elmnt_cmp_just_aprov)
+driver.execute_script("arguments[0].innerText='teste';", elmnt_cmp_just_aprov)
+driver.execute_script("arguments[0].innerHTML='teste';", elmnt_cmp_just_aprov)
+elmnt_cmp_just_aprov.get_attribute('value')
+Traceback (most recent call last):
+  File "<pyshell#229>", line 1, in <module>
+    elmnt_cmp_just_aprov.get_attribute('value')
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 173, in get_attribute
+    attribute_value = self.parent.execute_script(
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 884, in execute_script
+    return self.execute(command, {
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 430, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\c23x\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=102.0.5005.61)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x00EDD953+2414931]
+	Ordinal0 [0x00E6F5E1+1963489]
+	Ordinal0 [0x00D5C6B8+837304]
+	Ordinal0 [0x00D5F0B4+848052]
+	Ordinal0 [0x00D5EF72+847730]
+	Ordinal0 [0x00D5F8EA+850154]
+	Ordinal0 [0x00DB5249+1200713]
+	Ordinal0 [0x00DA449C+1131676]
+	Ordinal0 [0x00DB4812+1198098]
+	Ordinal0 [0x00DA42B6+1131190]
+	Ordinal0 [0x00D7E860+976992]
+	Ordinal0 [0x00D7F756+980822]
+	GetHandleVerifier [0x0114CC62+2510274]
+	GetHandleVerifier [0x0113F760+2455744]
+	GetHandleVerifier [0x00F6EABA+551962]
+	GetHandleVerifier [0x00F6D916+547446]
+	Ordinal0 [0x00E75F3B+1990459]
+	Ordinal0 [0x00E7A898+2009240]
+	Ordinal0 [0x00E7A985+2009477]
+	Ordinal0 [0x00E83AD1+2046673]
+	BaseThreadInitThunk [0x757D6359+25]
+	RtlGetAppContainerNamedObjectPath [0x779B87A4+228]
+	RtlGetAppContainerNamedObjectPath [0x779B8774+180]
+
+elmnt_cmp_just_aprov
+<selenium.webdriver.remote.webelement.WebElement (session="68e66acfc80c29f28485e018433e6011", element="e49cf219-6b58-41b6-bdfd-b34e53277581")>
+

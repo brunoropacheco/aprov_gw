@@ -1,0 +1,19 @@
+Novo atendente de PS TIC.
+Novo atendente do Service Desk.
+Acesso necessario para desempenho das atividades do(a) colaborador(a).
+Equipamento necessario para desempenho das atividades do(a) colaborador(a).
+Chamado aberto equivocadamente.
+Novo atendente da equipe de Servicos Eventuais de TIC.
+Relatorio necessario para demanda de auditoria/SOX.
+Desligamento de Analista.
+Ramal para novo atendente de PS TIC.
+Acesso de colaboradora em mesa de atendimento para prestar servicos.
+Chamado aberto de forma equivocada.
+Aprovacao nao se aplica para usuario solicitante.
+Acesso nao se aplica para usuario solicitante.
+Software nao se aplica para usuario solicitante.
+Devolucao de equipamento.
+Homologacao de software.
+Acao necessaria para disponbilizacao de ambiente para o cliente.
+Desativacao de servico.
+JOB de aplicacao.
