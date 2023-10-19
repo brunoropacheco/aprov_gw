@@ -50,7 +50,7 @@ class AprovGW:
         # VPN de acesso a RIC precisa estar conectada para encontrar o GETICWEB
         # Pegar o token para producao
         self.chave           = "C23X"
-        self.senha           = "3edc4RFV56"
+        self.senha           = "3edc4RFV69"
         self.url_token       = "https://geticweb.transpetro.com.br/api/seguranca/token"
         self.headers_token   = {'Content-Type': 'application/x-www-form-urlencoded'}
         self.data_token      = "grant_type=password&username="+self.chave+"&password="+self.senha+"&dominio=1"
