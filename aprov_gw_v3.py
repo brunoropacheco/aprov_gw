@@ -12,6 +12,7 @@ import sys #para lidar com os warnings
 import tkinter as tk
 from tkinter import ttk
 from datetime import time
+import os
 
 '''
 aprov_gw_v3.py
@@ -40,17 +41,52 @@ def init_graph_int():
        
 
 class AprovGW:
+    """
+    A class for handling approvals in GETICWEB.
+
+    Attributes:
+    - top: tkinter.Tk object representing the top level window
+    - chave: str representing the user's key for GETICWEB
+    - senha: str representing the user's password for GETICWEB
+    - url_token: str representing the URL for getting the token from GETICWEB
+    - headers_token: dict representing the headers for the token request
+    - data_token: str representing the data for the token request
+    - verify_token: bool representing whether to verify the SSL certificate for the token request
+    - token: str representing the token obtained from GETICWEB
+    - url_chm_aprov: str representing the URL for getting the approvals from GETICWEB
+    - hdrs_chm_aprov: dict representing the headers for the approvals request
+    - data_chm_aprov: dict representing the data for the approvals request
+    - vrfy_chm_aprov: bool representing whether to verify the SSL certificate for the approvals request
+    - chmd_aprv_json: list of dicts representing the approvals obtained from GETICWEB
+    - tit_gw: tkinter.Label object representing the title of the window
+    - qtde_chmd: int representing the number of approvals obtained from GETICWEB
+    - btns_aprv: dict of tkinter.Button objects representing the "Approve" buttons for each approval
+    - btns_reprv: dict of tkinter.Button objects representing the "Reject" buttons for each approval
+    - curr_var: dict of tkinter.StringVar objects representing the current value of the combobox for each approval
+    - combobox: dict of ttk.Combobox objects representing the combobox for each approval
+    - linhas: list of str representing the options for the combobox
+    - op: selenium.webdriver.ChromeOptions object representing the options for the Chrome driver
+    - driver: selenium.webdriver.Chrome object representing the Chrome driver
+    - url_gw: str representing the URL for GETICWEB
+    - elmnt_usr: selenium.webdriver.remote.webelement.WebElement object representing the username field in GETICWEB
+    - elmnt_pswd: selenium.webdriver.remote.webelement.WebElement object representing the password field in GETICWEB
+    """
+
     def __init__(self, top=None):    
+        """
+        Initializes the AprovGW object.
+
+        Args:
+        - top: tkinter.Tk object representing the top level window
+        """
         self.top = top
         self.top.title("Aprovacoes GETICWEB") # titulo da janela top level
-        #self.mainframe      = ttk.Frame(self.top)
-        #self.mainframe.place()
 
         ### Primeiro vamos utilizar a API REST do GETICWEB para pegar os chamados em aprovacao para mim
         # VPN de acesso a RIC precisa estar conectada para encontrar o GETICWEB
         # Pegar o token para producao
-        self.chave           = "C23X"
-        self.senha           = "3edc4RFV69"
+        self.chave           = os.environ.get('CHAVE')
+        self.senha           = os.environ.get('SENHA')
         self.url_token       = "https://geticweb.transpetro.com.br/api/seguranca/token"
         self.headers_token   = {'Content-Type': 'application/x-www-form-urlencoded'}
         self.data_token      = "grant_type=password&username="+self.chave+"&password="+self.senha+"&dominio=1"
@@ -74,6 +110,9 @@ class AprovGW:
         self.bol_conn_sln = self.conn_sln()   
 
     def descr_chmd(self):
+        """
+        Updates the descriptions of the approvals obtained from GETICWEB.
+        """
         for i in range(len(self.chmd_aprv_json)):
             self.chmd_aprv_json[i]['descricao'] = self.get_mk_dict_json("https://geticweb.transpetro"+
                                                         ".com.br/api/chamado/"+str(self.chmd_aprv_json[i]['chamadoId']),
@@ -84,6 +123,12 @@ class AprovGW:
             #print(self.chmd_aprv_json[i]['descricao'])
 
     def prnt_chmd(self, chmd_aprov_json):
+        """
+        Prints the approvals obtained from GETICWEB.
+
+        Args:
+        - chmd_aprov_json: list of dicts representing the approvals obtained from GETICWEB
+        """
         self.qtde_chmd = len(chmd_aprov_json)
         self.btns_aprv = {}
         self.btns_reprv = {}
@@ -114,6 +159,9 @@ class AprovGW:
             self.btns_reprv[i].grid(row=linha, column=4)       
 
     def conn_sln(self):
+        """
+        Connects to GETICWEB using Selenium to perform approvals.
+        """
         #abre o chrome atraves do selenium para executar as acoes no geticweb uma vez que a
         #API nao ta deixando aprovar por la
         self.op              = ChromeOptions()
